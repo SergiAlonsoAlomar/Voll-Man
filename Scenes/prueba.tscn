@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://w535b07hf18b"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_dpcm7"]
+[ext_resource type="PackedScene" uid="uid://8pemsywjxb87" path="res://Assets/Models/GLTF format/house_type08.glb" id="2_5grmo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n38fa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6ojs"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6ttdg"]
+size = Vector2(10, 150)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g2mp5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gjoai"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 73)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 150, 0, 0, 0)
+shape = SubResource("BoxShape3D_n38fa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_m6ojs")
+mesh = SubResource("PlaneMesh_6ttdg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 0, 0)
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28608, 0)
+script = ExtResource("1_dpcm7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("BoxMesh_g2mp5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("BoxShape3D_gjoai")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(-1, 2.99003e-08, -8.21505e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, 0, 3, -5)
+
+[node name="house_type082" parent="." instance=ExtResource("2_5grmo")]
+transform = Transform3D(2.38498e-07, 0, -20, 0, 20, 0, 20, 0, 2.38498e-07, 15, 0, 0)
+
+[node name="house_type083" parent="." instance=ExtResource("2_5grmo")]
+transform = Transform3D(2.38498e-07, 0, -20, 0, 20, 0, 20, 0, 2.38498e-07, 15, 0, 37.5252)
+
+[node name="house_type084" parent="." instance=ExtResource("2_5grmo")]
+transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, -15, 0, 0)
+
+[node name="house_type085" parent="." instance=ExtResource("2_5grmo")]
+transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, -15, 0, 37.5252)

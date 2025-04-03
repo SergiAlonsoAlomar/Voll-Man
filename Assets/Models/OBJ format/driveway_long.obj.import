@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://163gwo7h0fbx"
+path="res://.godot/imported/driveway_long.obj-93927ab1852939c4cba31cf7a370140c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/driveway_long.obj-93927ab1852939c4cba31cf7a370140c.mesh"]
+
+source_file="res://Assets/Models/OBJ format/driveway_long.obj"
+dest_files=["res://.godot/imported/driveway_long.obj-93927ab1852939c4cba31cf7a370140c.mesh", "res://.godot/imported/driveway_long.obj-93927ab1852939c4cba31cf7a370140c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
