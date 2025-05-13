@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://levdh0vl4up0"
+path="res://.godot/imported/driveway-long.obj-ad9b0e1142231e7ca40281d959a34ca9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/driveway-long.obj-ad9b0e1142231e7ca40281d959a34ca9.mesh"]
+
+source_file="res://assets/kenney_city-kit-suburban_20/Models/OBJ format/driveway-long.obj"
+dest_files=["res://.godot/imported/driveway-long.obj-ad9b0e1142231e7ca40281d959a34ca9.mesh", "res://.godot/imported/driveway-long.obj-ad9b0e1142231e7ca40281d959a34ca9.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://htwre2of40al"
+path="res://.godot/imported/path-stones-messy.obj-73d53f2eb98b0c70d8d1dd80358d999e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/path-stones-messy.obj-73d53f2eb98b0c70d8d1dd80358d999e.mesh"]
+
+source_file="res://assets/kenney_city-kit-suburban_20/Models/OBJ format/path-stones-messy.obj"
+dest_files=["res://.godot/imported/path-stones-messy.obj-73d53f2eb98b0c70d8d1dd80358d999e.mesh", "res://.godot/imported/path-stones-messy.obj-73d53f2eb98b0c70d8d1dd80358d999e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
