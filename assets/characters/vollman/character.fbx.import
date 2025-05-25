@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d0rl2lk12wbh0"
-path="res://.godot/imported/lata-Voll.glb-764d34a949369498e6f50dddc910cdbc.scn"
+uid="uid://cikk72yjti7qi"
+path="res://.godot/imported/character.fbx-c212cd7d52ab9695d98f1d8dc9736a5a.scn"
 
 [deps]
 
-source_file="res://models/lata-Voll.glb"
-dest_files=["res://.godot/imported/lata-Voll.glb-764d34a949369498e6f50dddc910cdbc.scn"]
+source_file="res://assets/characters/vollman/character.fbx"
+dest_files=["res://.godot/imported/character.fbx-c212cd7d52ab9695d98f1d8dc9736a5a.scn"]
 
 [params]
 
@@ -27,10 +27,11 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
-gltf/embedded_image_handling=1
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

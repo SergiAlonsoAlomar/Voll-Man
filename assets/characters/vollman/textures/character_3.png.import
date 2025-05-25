@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs77u0qhoew2i"
-path.s3tc="res://.godot/imported/character_0.png-38616af4f8bb986fb039de5ac80fb737.s3tc.ctex"
+uid="uid://d0bpletjun3tr"
+path.s3tc="res://.godot/imported/character_3.png-2957e6f1e587deaea140e784ef7194bf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "503dabd334e5818f191aeca384d14c54"
+"md5": "6c84e7654507304a73e4ced6e2400125"
 }
 
 [deps]
 
-source_file="res://models/character_0.png"
-dest_files=["res://.godot/imported/character_0.png-38616af4f8bb986fb039de5ac80fb737.s3tc.ctex"]
+source_file="res://assets/characters/vollman/textures/character_3.png"
+dest_files=["res://.godot/imported/character_3.png-2957e6f1e587deaea140e784ef7194bf.s3tc.ctex"]
 
 [params]
 
@@ -23,12 +23,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://character_3.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

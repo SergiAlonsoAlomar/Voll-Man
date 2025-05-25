@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://y7flmhb8vtj7"
-path="res://.godot/imported/Running Slide.fbx-15b90cb543690111b684fc6bbfc13370.scn"
+uid="uid://d0rl2lk12wbh0"
+path="res://.godot/imported/lata-Voll.glb-b157f82f495ca9694a2f5cec584146a4.scn"
 
 [deps]
 
-source_file="res://models/Running Slide.fbx"
-dest_files=["res://.godot/imported/Running Slide.fbx-15b90cb543690111b684fc6bbfc13370.scn"]
+source_file="res://assets/characters/collectibles/lata-Voll.glb"
+dest_files=["res://.godot/imported/lata-Voll.glb-b157f82f495ca9694a2f5cec584146a4.scn"]
 
 [params]
 
@@ -27,11 +27,10 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=true
+animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-fbx/importer=0
-fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
+gltf/naming_version=1
+gltf/embedded_image_handling=1

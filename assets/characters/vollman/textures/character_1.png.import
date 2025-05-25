@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lgqsp7mdolr8"
-path="res://.godot/imported/character_2.png-fff24a1a3e09f12d5af621be438b2dab.ctex"
+uid="uid://cej27scys0wns"
+path="res://.godot/imported/character_1.png-ed46271fb99371714acec1229dff02e6.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "8370cb1ad98d3b888784b69df353af26"
+"md5": "6aee909b3c03dcc1c38a6e5a1c4bcbee"
 }
 
 [deps]
 
-source_file="res://models/character_2.png"
-dest_files=["res://.godot/imported/character_2.png-fff24a1a3e09f12d5af621be438b2dab.ctex"]
+source_file="res://assets/characters/vollman/textures/character_1.png"
+dest_files=["res://.godot/imported/character_1.png-ed46271fb99371714acec1229dff02e6.ctex"]
 
 [params]
 

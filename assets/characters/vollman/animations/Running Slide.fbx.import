@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dqgh0vrguhyty"
-path="res://.godot/imported/Jump.fbx-aa7ef258d7ff7675743cdbd4ec4f14ee.scn"
+uid="uid://y7flmhb8vtj7"
+path="res://.godot/imported/Running Slide.fbx-e5915103aa6e5c0fd660055400cbe5e0.scn"
 
 [deps]
 
-source_file="res://models/Jump.fbx"
-dest_files=["res://.godot/imported/Jump.fbx-aa7ef258d7ff7675743cdbd4ec4f14ee.scn"]
+source_file="res://assets/characters/vollman/animations/Running Slide.fbx"
+dest_files=["res://.godot/imported/Running Slide.fbx-e5915103aa6e5c0fd660055400cbe5e0.scn"]
 
 [params]
 
