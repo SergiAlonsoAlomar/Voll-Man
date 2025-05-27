@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
-# Señales implementadas correctamente
-signal player_died     # Se emite en die()
-signal player_sliding  # Se emite en start_slide()
-signal player_jumped   # Se emite al saltar
+# Señales
+signal player_died
+signal player_sliding
+signal player_jumped
 
 @export var move_speed : float = 8.0
-@export var jump_force : float = 10.0
-@export var gravity : float = 20.0
+@export var jump_force : float = 15.0
+@export var gravity : float = 25.0
 @export var slide_speed : float = 15.0
 @export var slide_time : float = 0.7
 @export var rotation_speed : float = 5.0
@@ -18,32 +18,51 @@ var slide_timer : float = 0.0
 var can_move : bool = true
 var is_alive : bool = true
 
-@onready var animation_player = $AnimationPlayer
+# Crear colisiones si no existen
+@onready var normal_collision = $CollisionShape3D
 @onready var slide_collision = $SlideCollision
-@onready var normal_collision = $NormalCollision
 
 func _ready():
+	# Añadir al grupo player
+	add_to_group("player")
+	
+	# Crear colisiones si no existen
+	setup_collisions()
+	
 	reset()
+	print("Player ready en posición: ", position)
+
+func setup_collisions():
+	# Crear colisión normal si no existe
+	if not normal_collision:
+		normal_collision = CollisionShape3D.new()
+		normal_collision.name = "CollisionShape3D"
+		var capsule = CapsuleShape3D.new()
+		capsule.height = 2.0
+		capsule.radius = 0.5
+		normal_collision.shape = capsule
+		add_child(normal_collision)
+	
+	# Crear colisión para slide si no existe
+	if not slide_collision:
+		slide_collision = CollisionShape3D.new()
+		slide_collision.name = "SlideCollision"
+		var box = BoxShape3D.new()
+		box.size = Vector3(1.0, 0.5, 1.0)
+		slide_collision.shape = box
+		slide_collision.disabled = true
+		add_child(slide_collision)
 
 func _physics_process(delta):
 	if not can_move or not is_alive:
 		return
 	
-	# Gravedad
+	# Aplicar gravedad
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
-	# Movimiento
-	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
-	if direction:
-		velocity.x = direction.x * current_speed
-		velocity.z = direction.z * current_speed
-		rotation.y = lerp_angle(rotation.y, atan2(direction.x, direction.z), rotation_speed * delta)
-	else:
-		velocity.x = move_toward(velocity.x, 0, current_speed)
-		velocity.z = move_toward(velocity.z, 0, current_speed)
+	# Movimiento horizontal
+	handle_movement(delta)
 	
 	# Salto
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_sliding:
@@ -56,23 +75,33 @@ func _physics_process(delta):
 	elif is_sliding:
 		update_slide(delta)
 	
+	# Aplicar movimiento
 	move_and_slide()
 	
-	# Muerte por caída o choque
-	if position.y < -10:
-		die()
+	# Verificar muerte
+	check_death()
+
+func handle_movement(delta):
+	var input_dir = Input.get_vector("move_left", "move_right", "ui_up", "ui_down")
 	
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		if collision.get_collider().is_in_group("obstacle"):
-			die()
+	if input_dir != Vector2.ZERO:
+		velocity.x = input_dir.x * current_speed
+		# Mantener movimiento hacia adelante constante
+		velocity.z = -current_speed * 0.5
+	else:
+		velocity.x = move_toward(velocity.x, 0, current_speed * delta * 2)
+		velocity.z = -current_speed * 0.5
 
 func start_slide():
 	is_sliding = true
 	slide_timer = slide_time
 	current_speed = slide_speed
-	normal_collision.disabled = true
-	slide_collision.disabled = false
+	
+	if normal_collision:
+		normal_collision.disabled = true
+	if slide_collision:
+		slide_collision.disabled = false
+	
 	emit_signal("player_sliding")
 
 func update_slide(delta):
@@ -83,13 +112,31 @@ func update_slide(delta):
 func end_slide():
 	is_sliding = false
 	current_speed = move_speed
-	normal_collision.disabled = false
-	slide_collision.disabled = true
+	
+	if normal_collision:
+		normal_collision.disabled = false
+	if slide_collision:
+		slide_collision.disabled = true
+
+func check_death():
+	# Muerte por caída
+	if position.y < -10:
+		die()
+		return
+	
+	# Muerte por colisión con obstáculos
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider and collider.is_in_group("obstacle"):
+			die()
+			return
 
 func die():
 	if not is_alive:
 		return
 	
+	print("Player died!")
 	is_alive = false
 	can_move = false
 	emit_signal("player_died")
@@ -101,8 +148,13 @@ func reset():
 	position = Vector3(0, 1, 0)
 	rotation = Vector3.ZERO
 	current_speed = move_speed
-	normal_collision.disabled = false
-	slide_collision.disabled = true
+	
+	if normal_collision:
+		normal_collision.disabled = false
+	if slide_collision:
+		slide_collision.disabled = true
+	
+	print("Player reset completado")
 
 func enable_movement():
 	can_move = true
