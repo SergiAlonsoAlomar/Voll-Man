@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv4rf22r4j6t4"]
+
+[ext_resource type="PackedScene" uid="uid://cikk72yjti7qi" path="res://assets/characters/vollman/character.fbx" id="1_xh41k"]
+
+[node name="character" instance=ExtResource("1_xh41k")]
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]

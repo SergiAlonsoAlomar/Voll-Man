@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://4rau2s10ncfi"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_rp7ge"]
+[ext_resource type="PackedScene" uid="uid://ct0b0ulu7ok7u" path="res://scenes/core/world/world_manager.tscn" id="2_0b28i"]
+[ext_resource type="PackedScene" uid="uid://dat40usfkrnb4" path="res://scenes/core/world/chunk_1.tscn" id="3_dm1i4"]
+[ext_resource type="PackedScene" uid="uid://dv4rf22r4j6t4" path="res://assets/characters/vollman/player.tscn" id="3_tofpc"]
+[ext_resource type="PackedScene" uid="uid://unadhnx0skl0" path="res://scenes/core/world/chunk_2.tscn" id="4_5do0t"]
+[ext_resource type="PackedScene" uid="uid://d2fj0lpk5fx8v" path="res://scenes/ui/hud.tscn" id="4_kaawh"]
+[ext_resource type="PackedScene" uid="uid://b2an7dpm7gv5e" path="res://scenes/core/world/chunk_3.tscn" id="5_xfg1p"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_rp7ge")
+
+[node name="WorldManager" parent="." instance=ExtResource("2_0b28i")]
+chunk_scenes = Array[PackedScene]([ExtResource("3_dm1i4"), ExtResource("4_5do0t"), ExtResource("5_xfg1p")])
+max_speed = 15.0
+speed_increase_rate = 0.01
+
+[node name="Player" parent="." instance=ExtResource("3_tofpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, -10)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
+
+[node name="Hud" parent="." instance=ExtResource("4_kaawh")]

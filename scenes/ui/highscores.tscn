@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://f2r7ivby3gfh"]
+
+[ext_resource type="Script" path="res://scenes/ui/highscores.gd" id="1_wva5r"]
+
+[node name="Highscores" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wva5r")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer"]
+layout_mode = 2

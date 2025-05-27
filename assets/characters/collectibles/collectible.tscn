@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8fu026jy73lg"]
+
+[ext_resource type="PackedScene" uid="uid://d0rl2lk12wbh0" path="res://assets/characters/collectibles/lata-Voll.glb" id="1_bqpfu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hekce"]
+radius = 0.833122
+height = 4.35289
+
+[node name="lata-Voll" instance=ExtResource("1_bqpfu")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="4"]
+shape = SubResource("CapsuleShape3D_hekce")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]

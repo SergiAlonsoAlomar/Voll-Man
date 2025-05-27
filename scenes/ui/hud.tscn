@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2fj0lpk5fx8v"]
+
+[ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_l2ppx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f2sty"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jky6w"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_l2ppx")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 24
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_f2sty")
+
+[node name="SpeedLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "Speed: 0"
+label_settings = SubResource("LabelSettings_jky6w")
+horizontal_alignment = 2
+
+[node name="HighScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="PauseButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "PAUSE"
