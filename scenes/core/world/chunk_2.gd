@@ -1,7 +1,5 @@
 extends Node3D
 
-class_name WorldChunk
-
 signal chunk_exited
 
 @export var chunk_length : float = 30.0
