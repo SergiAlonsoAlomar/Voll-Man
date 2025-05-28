@@ -90,8 +90,8 @@ func update_animation():
 		if anim_player.current_animation != "Jump":
 			anim_player.play("Jump")
 	elif abs(velocity.x) > 0.1:
-		if anim_player.current_animation != "Run":
-			anim_player.play("Run")
+		if anim_player.current_animation != "Running":
+			anim_player.play("Running")
 	else:
 		if anim_player.is_playing():
 			anim_player.stop()

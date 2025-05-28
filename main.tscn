@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://4rau2s10ncfi"]
+[gd_scene load_steps=11 format=3 uid="uid://4rau2s10ncfi"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_rp7ge"]
 [ext_resource type="PackedScene" uid="uid://ct0b0ulu7ok7u" path="res://scenes/core/world/world_manager.tscn" id="2_0b28i"]
@@ -7,6 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://unadhnx0skl0" path="res://scenes/core/world/chunk_2.tscn" id="4_5do0t"]
 [ext_resource type="PackedScene" uid="uid://d2fj0lpk5fx8v" path="res://scenes/ui/hud.tscn" id="4_kaawh"]
 [ext_resource type="PackedScene" uid="uid://b2an7dpm7gv5e" path="res://scenes/core/world/chunk_3.tscn" id="5_xfg1p"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kyhdc"]
+ground_color = Color(0.540269, 0.569989, 0.853053, 1)
+
+[sub_resource type="Sky" id="Sky_rh7rx"]
+sky_material = SubResource("PhysicalSkyMaterial_kyhdc")
+
+[sub_resource type="Environment" id="Environment_idkd3"]
+background_mode = 2
+sky = SubResource("Sky_rh7rx")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_rp7ge")
@@ -26,3 +36,6 @@ transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
 
 [node name="Hud" parent="." instance=ExtResource("4_kaawh")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_idkd3")

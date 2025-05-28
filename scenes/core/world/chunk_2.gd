@@ -28,7 +28,7 @@ func generate_platforms():
 	base_platform.mesh = base_mesh
 	
 	var base_material = StandardMaterial3D.new()
-	base_material.albedo_color = Color(0.3, 0.3, 0.3)
+	base_material.albedo_color = Color(0.1, 0.1, 0.1)
 	base_platform.set_surface_override_material(0, base_material)
 	
 	add_child(base_platform)

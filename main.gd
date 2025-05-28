@@ -35,7 +35,15 @@ func _on_game_started():
 			player.enable_movement()
 
 func _on_game_ended():
+	if hud:
+		hud.visible = false
+	
 	var score_submission = preload("res://scenes/ui/score_submission.tscn").instantiate()
 	if score_submission.has_method("set_score") and world_manager:
 		score_submission.set_score(world_manager.score)
 	add_child(score_submission)
+
+func hide_hud():
+	var hud = $HUD  # Asegúrate de que esta sea la ruta correcta
+	if hud:
+		hud.visible = false
