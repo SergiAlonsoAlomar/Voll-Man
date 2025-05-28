@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://xba81mhilx5u"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_u4ce7"]
-[ext_resource type="Texture2D" uid="uid://cdvsd0sbex8mo" path="res://assets/background.png" id="2_ttn1a"]
+[ext_resource type="Texture2D" uid="uid://cdvsd0sbex8mo" path="res://assets/backgrounds/background.png" id="2_ttn1a"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -16,6 +16,7 @@ texture = ExtResource("2_ttn1a")
 expand_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 644.0
 

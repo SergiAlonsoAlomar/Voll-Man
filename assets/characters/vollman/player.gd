@@ -18,10 +18,14 @@ var slide_timer : float = 0.0
 var can_move : bool = true
 var is_alive : bool = true
 
+@onready var anim_player: AnimationPlayer = $"voll-man-verde/AnimationPlayer"
 @onready var normal_collision = $CollisionShape3D
 @onready var slide_collision = $SlideCollision
 
 func _ready():
+	print("AnimationPlayer existe:", anim_player != null)
+	if anim_player:
+		print("Animaciones disponibles: ", anim_player.get_animation_list())
 	add_to_group("player")
 	setup_collisions()
 	reset()
@@ -50,25 +54,22 @@ func _physics_process(delta):
 	if not can_move or not is_alive:
 		return
 
-	# Aplicar gravedad
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	# Movimiento lateral y avance
 	handle_movement(delta)
 
-	# Salto
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_sliding:
 		velocity.y = jump_force
 		emit_signal("player_jumped")
 
-	# Deslizamiento
 	if Input.is_action_just_pressed("slide") and is_on_floor() and not is_sliding:
 		start_slide()
 	elif is_sliding:
 		update_slide(delta)
 
 	move_and_slide()
+	update_animation()
 	check_death()
 
 func handle_movement(delta):
@@ -80,6 +81,20 @@ func handle_movement(delta):
 		velocity.x = move_toward(velocity.x, 0, current_speed * delta * 2)
 
 	velocity.z = 0
+
+func update_animation():
+	if not is_alive or not anim_player:
+		return
+
+	if not is_on_floor():
+		if anim_player.current_animation != "Jump":
+			anim_player.play("Jump")
+	elif abs(velocity.x) > 0.1:
+		if anim_player.current_animation != "Run":
+			anim_player.play("Run")
+	else:
+		if anim_player.is_playing():
+			anim_player.stop()
 
 func start_slide():
 	is_sliding = true

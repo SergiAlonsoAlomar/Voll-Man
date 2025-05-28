@@ -1,7 +1,6 @@
 extends Control
 
 @onready var scores_container = $Panel/CenterContainer/VBoxContainer
-@onready var title_label = $Panel/CenterContainer/VBoxContainer/TitleLabel
 @onready var back_button = $Panel/CenterContainer/VBoxContainer/BackButton
 
 func _ready():
@@ -19,7 +18,7 @@ func _on_back_button_pressed():
 func load_high_scores():
 	# Limpiar contenedor, pero mantener el título y el botón
 	for child in scores_container.get_children():
-		if child != title_label and child != back_button:
+		if child != back_button:
 			child.queue_free()
 	
 	# Mostrar mensaje de carga
@@ -37,7 +36,7 @@ func get_and_display_scores():
 
 	# Limpiar mensaje de carga
 	for child in scores_container.get_children():
-		if child != title_label and child != back_button:
+		if child != back_button:
 			child.queue_free()
 	
 	var scores = sw_result.scores

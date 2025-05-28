@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdvsd0sbex8mo"
-path="res://.godot/imported/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.ctex"
+uid="uid://8l50mx5yabwc"
+path="res://.godot/imported/GameOverVoll-Man.jpg-c31314e9efb95bde5f115e8b7826431b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background.png"
-dest_files=["res://.godot/imported/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.ctex"]
+source_file="res://assets/backgrounds/GameOverVoll-Man.jpg"
+dest_files=["res://.godot/imported/GameOverVoll-Man.jpg-c31314e9efb95bde5f115e8b7826431b.ctex"]
 
 [params]
 
