@@ -130,9 +130,18 @@ func generate_collectibles():
 
 func _on_collectible_collected(body, collectible):
 	if body.name == "Player":
+		# Reproducir sonido al recoger la lata
+		var sfx = AudioStreamPlayer.new()
+		sfx.stream = preload("res://assets/audio/lataSound.mp3")
+		sfx.pitch_scale = randf_range(0.95, 1.05)
+		add_child(sfx)
+		sfx.play()
+		sfx.finished.connect(sfx.queue_free)
+
+		# Eliminar el colectible de la escena
 		collectible.queue_free()
 
-		# Acceder al WorldManager por grupo
+		# Sumar puntuación al jugador
 		var wm = get_tree().get_first_node_in_group("world_manager")
 		if wm and wm.has_method("add_score"):
 			wm.add_score(10)

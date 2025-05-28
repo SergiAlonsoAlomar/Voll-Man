@@ -3,6 +3,7 @@ extends Node3D
 @onready var world_manager = $WorldManager
 @onready var hud = $Hud
 @onready var player = $Player
+@onready var music_player = $MusicPlayer
 
 func _ready():
 	if not world_manager:
@@ -33,10 +34,15 @@ func _on_game_started():
 		player.reset()
 		if player.has_method("enable_movement"):
 			player.enable_movement()
+	if music_player:
+		music_player.play()
 
 func _on_game_ended():
 	if hud:
 		hud.visible = false
+	
+	if music_player:
+		music_player.stop()
 	
 	var score_submission = preload("res://scenes/ui/score_submission.tscn").instantiate()
 	if score_submission.has_method("set_score") and world_manager:
