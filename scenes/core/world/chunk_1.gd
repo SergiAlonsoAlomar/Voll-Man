@@ -14,6 +14,10 @@ func _ready():
 func _process(delta):
 	position.z -= move_speed * delta
 	
+	for c in collectible_list:
+		if is_instance_valid(c):
+			c.rotate_y(delta * 4.0)
+
 	if position.z < -chunk_length:
 		emit_signal("chunk_exited")
 		queue_free()
@@ -65,35 +69,40 @@ func generate_obstacles():
 		obstacle.create_convex_collision()
 		obstacle.add_to_group("obstacle")
 
+var collectible_list: Array = []
+
 func generate_collectibles():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	
-	for i in range(8):
-		var collectible = MeshInstance3D.new()
+	collectible_list.clear()
+
+	for i in range(6):
+		var collectible_scene = preload("res://assets/characters/collectibles/lata-Voll.glb")
+		var collectible = collectible_scene.instantiate()
 		collectible.name = "Collectible"
-		
-		var sphere_mesh = SphereMesh.new()
-		sphere_mesh.radius = 0.3
-		sphere_mesh.height = 0.6
-		collectible.mesh = sphere_mesh
-		
-		var collectible_material = StandardMaterial3D.new()
-		collectible_material.albedo_color = Color(1.0, 0.8, 0.2)
-		collectible.set_surface_override_material(0, collectible_material)
-		
-		collectible.position = Vector3(rng.randf_range(-4.0, 4.0), 0.5, rng.randf_range(5.0, chunk_length - 5.0))
-		
+
+		# Escalado y rotación inicial (15° en Z)
+		collectible.scale = Vector3(0.2, 0.2, 0.2)
+		collectible.rotation_degrees.z = 15
+
+		# Posición aleatoria
+		collectible.position = Vector3(
+			rng.randf_range(-4.0, 4.0),
+			rng.randf_range(0.5, 2.0),
+			rng.randf_range(5.0, chunk_length - 5.0)
+		)
+
 		add_child(collectible)
-		collectible.create_convex_collision()
-		
+		collectible_list.append(collectible)
+
+		# Área de colisión
 		var area = Area3D.new()
 		var collision = CollisionShape3D.new()
 		collision.shape = SphereShape3D.new()
 		collision.shape.radius = 0.5
 		area.add_child(collision)
 		collectible.add_child(area)
-		
+
 		area.body_entered.connect(_on_collectible_collected.bind(collectible))
 
 func _on_collectible_collected(body, collectible):
