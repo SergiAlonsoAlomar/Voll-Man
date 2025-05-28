@@ -12,9 +12,9 @@ func _ready():
 	generate_collectibles()
 
 func _process(delta):
-	position.z += move_speed * delta
+	position.z -= move_speed * delta
 	
-	if position.z > chunk_length:
+	if position.z < -chunk_length:
 		emit_signal("chunk_exited")
 		queue_free()
 

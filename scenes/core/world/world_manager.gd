@@ -1,23 +1,23 @@
-extends Node3D
+extends Node
 class_name WorldManager
 
 signal score_updated(new_score)
 signal game_started
 signal game_ended
 
-@export var chunk_scenes: Array[PackedScene] = []
-@export var chunk_spacing: float = 30.0
-@export var base_speed: float = 5.0
-@export var max_speed: float = 20.0
-@export var speed_increase_rate: float = 0.02
-@export var initial_chunks: int = 3
+@export var chunk_scenes : Array[PackedScene] = []
+@export var chunk_spacing : float = 30.0
+@export var base_speed : float = 5.0
+@export var max_speed : float = 20.0
+@export var speed_increase_rate : float = 0.02
+@export var initial_chunks : int = 3
 
-var current_speed: float
-var active_chunks: Array = []
-var score: int = 0
-var high_score: int = 0
-var is_game_running: bool = false
-var player: Node = null
+var current_speed : float
+var active_chunks : Array = []
+var score : int = 0
+var high_score : int = 0
+var is_game_running : bool = false
+var player
 var hud: CanvasLayer = null
 
 func _ready():
@@ -34,7 +34,7 @@ func _process(delta):
 
 	for chunk in active_chunks:
 		if is_instance_valid(chunk):
-			chunk.position.z += current_speed * delta
+			chunk.move_speed = current_speed  # velocidad aplicada en el chunk
 
 	score += int(current_speed * delta * 2.0)
 	emit_signal("score_updated", score)
@@ -83,9 +83,9 @@ func setup_chunks():
 	active_chunks.clear()
 
 	for i in range(initial_chunks):
-		spawn_chunk(i * -chunk_spacing)  # z negativa: se acercan al jugador
+		spawn_chunk(i * chunk_spacing)
 
-func spawn_chunk(z_position: float):
+func spawn_chunk(z_position : float):
 	if chunk_scenes.is_empty():
 		return
 
@@ -94,7 +94,8 @@ func spawn_chunk(z_position: float):
 	var chunk_index = rng.randi_range(0, chunk_scenes.size() - 1)
 	var new_chunk = chunk_scenes[chunk_index].instantiate()
 
-	new_chunk.position.z = z_position
+	new_chunk.position = Vector3(0, 0, z_position)  # Se generan delante del jugador (Z+)
+	new_chunk.move_speed = current_speed
 	if new_chunk.has_signal("chunk_exited"):
 		new_chunk.chunk_exited.connect(_on_chunk_exited)
 
@@ -110,7 +111,7 @@ func _on_chunk_exited():
 	if active_chunks.size() > 0:
 		var last_chunk = active_chunks.back()
 		if is_instance_valid(last_chunk):
-			spawn_chunk(last_chunk.position.z - chunk_spacing)
+			spawn_chunk(last_chunk.position.z + chunk_spacing)
 
 func _on_player_died():
 	stop_game()
