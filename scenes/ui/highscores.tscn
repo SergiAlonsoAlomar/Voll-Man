@@ -1,27 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://f2r7ivby3gfh"]
+[gd_scene load_steps=3 format=3 uid="uid://f2r7ivby3gfh"]
 
 [ext_resource type="Script" path="res://scenes/ui/highscores.gd" id="1_wva5r"]
+[ext_resource type="Texture2D" uid="uid://cdvsd0sbex8mo" path="res://assets/background.png" id="2_bod64"]
 
 [node name="Highscores" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_wva5r")
 
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1150.0
+offset_bottom = 644.0
+texture = ExtResource("2_bod64")
+expand_mode = 2
+
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1155.0
+offset_bottom = 654.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.998
+anchor_bottom = 0.992
+offset_right = 0.309937
+offset_bottom = 0.231995
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
+text = "VOLL-MAN HIGHSCORES"
 
-[node name="Button" type="Button" parent="ScrollContainer"]
+[node name="BackButton" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
+text = "Back to Menu"

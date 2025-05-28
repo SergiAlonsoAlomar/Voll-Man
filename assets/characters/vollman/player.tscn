@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv4rf22r4j6t4"]
+[gd_scene load_steps=4 format=3 uid="uid://dv4rf22r4j6t4"]
 
-[ext_resource type="PackedScene" uid="uid://cikk72yjti7qi" path="res://assets/characters/vollman/character.fbx" id="1_xh41k"]
+[ext_resource type="PackedScene" uid="uid://dqds1tso25hsu" path="res://assets/characters/vollman/voll-man-verde.glb" id="2_5kwsi"]
+[ext_resource type="Script" path="res://assets/characters/vollman/player.gd" id="2_nf8hn"]
 
-[node name="character" instance=ExtResource("1_xh41k")]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eg3oc"]
+height = 1.98407
 
-[node name="RayCast3D" type="RayCast3D" parent="." index="2"]
+[node name="Node3D" type="CharacterBody3D"]
+script = ExtResource("2_nf8hn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
+[node name="voll-man-verde" parent="." instance=ExtResource("2_5kwsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="voll-man-verde"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_eg3oc")

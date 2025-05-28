@@ -21,6 +21,7 @@ var player
 var hud: CanvasLayer = null
 
 func _ready():
+	add_to_group("world_manager")
 	current_speed = base_speed
 	load_high_score()
 	if hud:

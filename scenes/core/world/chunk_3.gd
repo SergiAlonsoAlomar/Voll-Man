@@ -58,27 +58,42 @@ func generate_platforms():
 func generate_obstacles():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	
-	for i in range(4):
-		var obstacle = MeshInstance3D.new()
-		obstacle.name = "Obstacle"
 
-		var box_mesh = BoxMesh.new()
-		box_mesh.size = Vector3(rng.randf_range(0.5, 2.0), rng.randf_range(0.5, 3.0), rng.randf_range(0.5, 2.0))
-		obstacle.mesh = box_mesh
+	for i in range(4):
+		var obstacle = StaticBody3D.new()
+
+		# Malla visual
+		var mesh_instance = MeshInstance3D.new()
+		var mesh = BoxMesh.new()
+		mesh.size = Vector3(rng.randf_range(0.5, 1.5), rng.randf_range(1.0, 2.5), rng.randf_range(0.5, 1.5))
+		mesh_instance.mesh = mesh
 
 		var material = StandardMaterial3D.new()
 		material.albedo_color = Color(0.8, 0.2, 0.2)
-		obstacle.set_surface_override_material(0, material)
+		mesh_instance.set_surface_override_material(0, material)
 
+		obstacle.add_child(mesh_instance)
+
+		# Colisión
+		var shape = BoxShape3D.new()
+		shape.size = mesh.size
+
+		var collision_shape = CollisionShape3D.new()
+		collision_shape.shape = shape
+
+		obstacle.add_child(collision_shape)
+
+		# Posición en el chunk
 		obstacle.position = Vector3(
 			rng.randf_range(-4.0, 4.0),
-			box_mesh.size.y / 2,
-			rng.randf_range(10.0, chunk_length - 10.0))
+			shape.size.y / 2.0,
+			rng.randf_range(5.0, chunk_length - 5.0)
+		)
+
+		# Añadir al grupo para detección
+		obstacle.add_to_group("obstacle")
 
 		add_child(obstacle)
-		obstacle.create_convex_collision()
-		obstacle.add_to_group("obstacle")
 
 var collectible_list: Array = []
 
@@ -91,12 +106,9 @@ func generate_collectibles():
 		var collectible_scene = preload("res://assets/characters/collectibles/lata-Voll.glb")
 		var collectible = collectible_scene.instantiate()
 		collectible.name = "Collectible"
-
-		# Escalado y rotación inicial (15° en Z)
 		collectible.scale = Vector3(0.2, 0.2, 0.2)
 		collectible.rotation_degrees.z = 15
 
-		# Posición aleatoria
 		collectible.position = Vector3(
 			rng.randf_range(-4.0, 4.0),
 			rng.randf_range(0.5, 2.0),
@@ -119,5 +131,8 @@ func generate_collectibles():
 func _on_collectible_collected(body, collectible):
 	if body.name == "Player":
 		collectible.queue_free()
-		if has_node("/root/WorldManager"):
-			get_node("/root/WorldManager").add_score(10)
+
+		# Acceder al WorldManager por grupo
+		var wm = get_tree().get_first_node_in_group("world_manager")
+		if wm and wm.has_method("add_score"):
+			wm.add_score(10)

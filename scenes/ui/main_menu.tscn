@@ -1,14 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://xba81mhilx5u"]
+[gd_scene load_steps=3 format=3 uid="uid://xba81mhilx5u"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_u4ce7"]
+[ext_resource type="Texture2D" uid="uid://cdvsd0sbex8mo" path="res://assets/background.png" id="2_ttn1a"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_u4ce7")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 644.0
+texture = ExtResource("2_ttn1a")
+expand_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
 offset_right = 1151.0
 offset_bottom = 644.0
 
@@ -29,8 +36,3 @@ text = "Quit"
 
 [node name="Title" type="Label" parent="CenterContainer"]
 layout_mode = 2
-
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
