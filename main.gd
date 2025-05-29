@@ -50,6 +50,6 @@ func _on_game_ended():
 	add_child(score_submission)
 
 func hide_hud():
-	var hud = $HUD  # Asegúrate de que esta sea la ruta correcta
+	var hud = $HUD
 	if hud:
 		hud.visible = false

@@ -83,7 +83,7 @@ func generate_obstacles():
 
 		obstacle.add_child(collision_shape)
 
-		# Posición en el chunk
+		# Colocar obstaculos en el chunk
 		obstacle.position = Vector3(
 			rng.randf_range(-4.0, 4.0),
 			shape.size.y / 2.0,

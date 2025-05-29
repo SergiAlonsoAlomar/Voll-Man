@@ -15,6 +15,6 @@ func _on_resume_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_menu_pressed():
-	get_tree().paused = false  # Despausa antes de cambiar
+	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	await get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")

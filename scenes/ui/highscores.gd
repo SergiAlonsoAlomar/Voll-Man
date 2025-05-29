@@ -4,7 +4,7 @@ extends Control
 @onready var back_button = $Panel/CenterContainer/VBoxContainer/BackButton
 
 func _ready():
-	await get_tree().process_frame  # Espera un frame a que SilentWolf esté listo
+	await get_tree().process_frame
 
 	if back_button:
 		back_button.grab_focus()
@@ -16,7 +16,7 @@ func _on_back_button_pressed():
 	await get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 func load_high_scores():
-	# Limpiar contenedor, pero mantener el título y el botón
+	# Limpiar contenedor de puntuacions
 	for child in scores_container.get_children():
 		if child != back_button:
 			child.queue_free()
@@ -30,7 +30,7 @@ func load_high_scores():
 	await get_and_display_scores()
 
 func get_and_display_scores():
-	# Obtener puntuaciones (máximo 10)
+	# Obtener las 10 mejores puntuaciones
 	var sw_result: Dictionary = await SilentWolf.Scores.get_scores(10).sw_get_scores_complete
 	print("Scores: " + str(sw_result.scores))
 

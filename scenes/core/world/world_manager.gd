@@ -35,7 +35,7 @@ func _process(delta):
 
 	for chunk in active_chunks:
 		if is_instance_valid(chunk):
-			chunk.move_speed = current_speed  # velocidad aplicada en el chunk
+			chunk.move_speed = current_speed
 
 	score += int(current_speed * delta * 2.0)
 	emit_signal("score_updated", score)
@@ -95,7 +95,7 @@ func spawn_chunk(z_position : float):
 	var chunk_index = rng.randi_range(0, chunk_scenes.size() - 1)
 	var new_chunk = chunk_scenes[chunk_index].instantiate()
 
-	new_chunk.position = Vector3(0, 0, z_position)  # Se generan delante del jugador (Z+)
+	new_chunk.position = Vector3(0, 0, z_position)
 	new_chunk.move_speed = current_speed
 	if new_chunk.has_signal("chunk_exited"):
 		new_chunk.chunk_exited.connect(_on_chunk_exited)

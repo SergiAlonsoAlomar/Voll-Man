@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-# Señales
 signal player_died
 signal player_sliding
 signal player_jumped
@@ -79,7 +78,7 @@ func handle_movement(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, current_speed * delta * 2)
 
-	# Fijar movimiento hacia adelante: en este caso lo bloqueamos
+	# Bloquear movimiento hacia adelante
 	velocity.z = 0
 
 func start_slide():

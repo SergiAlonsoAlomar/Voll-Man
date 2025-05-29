@@ -7,7 +7,6 @@ extends Control
 var final_score : int = 0
 
 func _ready():
-	# Mostrar la puntuación final si ya estaba asignada
 	if score_label:
 		score_label.text = "Your Score: %d" % final_score
 	
@@ -16,7 +15,6 @@ func _ready():
 
 func set_score(score : int):
 	final_score = score
-	# Solo asignar si el nodo ya está listo
 	if is_inside_tree() and score_label:
 		score_label.text = "Your Score: %d" % final_score
 

@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-# Señales
 signal player_died
 signal player_sliding
 signal player_jumped
