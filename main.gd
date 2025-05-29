@@ -26,7 +26,7 @@ func _ready():
 	world_manager.game_started.connect(_on_game_started)
 	world_manager.game_ended.connect(_on_game_ended)
 
-	# Iniciar el juego directamente al entrar en la escena
+	# Iniciar el juego al entrar en la escena
 	world_manager.start_game()
 
 func _on_game_started():
