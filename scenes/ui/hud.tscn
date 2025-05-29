@@ -38,8 +38,11 @@ offset_bottom = 23.0
 grow_horizontal = 2
 
 [node name="PauseButton" type="Button" parent="."]
-offset_left = 527.0
-offset_top = 4.0
-offset_right = 586.0
-offset_bottom = 35.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.5
+offset_right = 29.5
+offset_bottom = 31.0
+grow_horizontal = 2
 text = "PAUSE"

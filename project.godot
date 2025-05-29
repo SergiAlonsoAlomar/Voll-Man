@@ -13,12 +13,19 @@ config_version=5
 config/name="Voll-Man"
 run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/backgrounds/background.png"
 
 [autoload]
 
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 SilentWolfIntegration="*res://scripts/mechanics/silentwolf_integration.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=3
+window/size/resizable=false
 
 [editor]
 
